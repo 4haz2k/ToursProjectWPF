@@ -5,27 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFToursProject"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="ToursPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="109*"/>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-
-        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="80,0">
-            <StackPanel Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Stretch">
+            <StackPanel Background="#bae3e8" Margin="0 5 0 5">
+                <TextBlock x:Name="TotalPrice" Padding="0 0 10 0" HorizontalAlignment="Right" FontSize="20" Width="auto" TextAlignment="Right"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Введите название для поиска:" Width="175" TextAlignment="Right" Margin="5"></TextBlock>
                 <TextBox Width="225" Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged" Margin="5"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Text="Выберите тип:" Width="175" TextAlignment="Right" Margin="5"></TextBlock>
-                <ComboBox Width="225" Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" Margin="5"></ComboBox>
+                <ComboBox Width="225" Name="ComboType" SelectionChanged="ComboType_SelectionChanged" DisplayMemberPath="Name" Margin="5" SelectedIndex="0"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock FontWeight="Bold"><Run Text="Сортировка цены по:"/></TextBlock>
+                <RadioButton x:Name="RadioButtonASC" Margin="5" GroupName="Sorting" Checked="CheckActual_Checked_ASC" Content="Возрастанию"/>
+                <RadioButton x:Name="RadioButtonDESC" Margin="5" GroupName="Sorting" Checked="CheckActual_Checked_DESC" Content="Убыванию"/>
             </StackPanel>
             <CheckBox x:Name="CheckActual" Checked="CheckActual_Checked" Unchecked="CheckActual_Checked" Content="Показывать только актуальные туры" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-        </WrapPanel>
+        </StackPanel>
 
         <ListView Grid.Row="1" Name="LViewTours" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Grid.RowSpan="2">
             <ListView.ItemsPanel>
@@ -35,7 +42,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="20" Width="400">
+                    <Grid Margin="20" Width="350">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="70"></RowDefinition>
                             <RowDefinition Height="310"></RowDefinition>
@@ -43,18 +50,26 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Image Width="400" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
-                            <Image.Source>Resources/picture.png</Image.Source>
+                            <Image.Source>
+                                <Binding Path="ImagePreview">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>
+                                            Resources\picture.png
+                                        </ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
                         </Image>
                         <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextAlignment="Center" Margin="5 5" Width="200"
                                TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">
                         </TextBlock>
                         <TextBlock Text="{Binding Price, StringFormat={}{0:N2} РУБ}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
                         <TextBlock Text="{Binding TicketCount, StringFormat={}Билетов осталось: {0}}" Grid.Row="3" FontSize="14" HorizontalAlignment="Right"></TextBlock>
-                        <TextBlock Text="{Binding ActualText}" Grid.Row="4" FontSize="14" HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Text="{Binding ActualText}" Grid.Row="4" FontSize="14" HorizontalAlignment="Left" Foreground="{Binding ActualTextColor}"></TextBlock>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="Hotels" Content="Список отелей" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Hotels_Click"></Button>
+        <Button Name="Hotels" Content="Список отелей" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Hotels_Click" Width="176"></Button>
     </Grid>
 </Page>
