@@ -24,7 +24,7 @@ namespace WPFToursProject
 
     class PagesComboBox
     {
-        public int index { get; set; }
+        public int Index { get; set; }
 
         public int Value { get; set; }
     }

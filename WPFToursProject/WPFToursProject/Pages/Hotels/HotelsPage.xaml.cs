@@ -67,7 +67,7 @@ namespace WPFToursProject
             {
                 ListOfRange.Add(new PagesComboBox()
                 {
-                    index = i,
+                    Index = i,
                     Value = i * 10
                 });
             }

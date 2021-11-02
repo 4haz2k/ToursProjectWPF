@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\App.xaml
-5-307484759
+51549044661
 21750853300
-21-1865059830
+21325396104
 191502721756
-AddEditPage.xaml;HotelsPage.xaml;MainWindow.xaml;ToursPage.xaml;Verification.xaml;
+Pages\Hotels\AddEditPage.xaml;Pages\Hotels\HotelsPage.xaml;MainWindow.xaml;ToursPage.xaml;Pages\Hotels\Verification.xaml;
 
-True
+False
 
