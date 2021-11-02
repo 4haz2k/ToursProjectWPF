@@ -24,21 +24,36 @@ namespace WPFToursProject
         public MainWindow()
         {
             InitializeComponent();
+
+            //отображаем страницу Туров
             MainFrame.Navigate(new ToursPage());
 
+            //передаем фрейм в менеджер
             Manager.MainFrame = MainFrame;
         }
 
+        /// <summary>
+        /// Срабатывание генерации фрейма
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
+            //проверка на то, можно ли вернуться назад, если да, то показываем кнопку
             if (MainFrame.CanGoBack)
                 BtnBack.Visibility = Visibility.Visible;
             else
                 BtnBack.Visibility = Visibility.Hidden;
         }
 
+        /// <summary>
+        /// НАжатие кнопки "Назад"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
+            //переход на предыдущую страницу
             Manager.MainFrame.GoBack();
         }
     }

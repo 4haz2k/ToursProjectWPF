@@ -20,20 +20,35 @@ namespace WPFToursProject
     /// </summary>
     public partial class Verification : Page
     {
+        /// <summary>
+        /// Данные о переданном отеле
+        /// </summary>
         private Hotel currentHotel = new Hotel();
 
+        /// <summary>
+        /// Конструктор страницы верификации 
+        /// </summary>
+        /// <param name="selectedHotel">Отель для удаления</param>
         public Verification(Hotel selectedHotel)
         {
             InitializeComponent();
             currentHotel = selectedHotel;
         }
 
+        /// <summary>
+        /// Срабатывание кнопки "Удалить"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnVerify_Click(object sender, RoutedEventArgs e)
         {
+            //проверка на пустое поле
             if (!string.IsNullOrWhiteSpace(VerifyTextBox.Text))
             {
+                //сравнение данных, а именно названия отеля и того, что ввёл пользователь
                 if (currentHotel.Name.Equals(VerifyTextBox.Text))
                 {
+                    //удаление отеля
                     try
                     {
                         TravelAgencyEntities1.GetEntities().Hotel.Remove(currentHotel);

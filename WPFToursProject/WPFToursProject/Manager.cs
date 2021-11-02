@@ -7,8 +7,14 @@ using System.Windows.Controls;
 
 namespace WPFToursProject
 {
+    /// <summary>
+    /// Класс для переключения страниц во фрейме
+    /// </summary>
     class Manager
     {
+        /// <summary>
+        /// Главный фрейм
+        /// </summary>
         public static Frame MainFrame { get; set; }
     }
 }
