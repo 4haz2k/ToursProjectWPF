@@ -27,3 +27,5 @@ D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\bin\Debug\EntityFrame
 D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\bin\Debug\ru\EntityFramework.resources.dll
 D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\obj\Debug\WPFToursProject.csproj.CopyComplete
 D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\obj\Debug\WPFToursProject.csprojAssemblyReference.cache
+D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\obj\Debug\Verification.g.cs
+D:\Desktop\ToursProjectWPF\WPFToursProject\WPFToursProject\obj\Debug\Verification.baml

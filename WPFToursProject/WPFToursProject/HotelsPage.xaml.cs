@@ -42,18 +42,7 @@ namespace WPFToursProject
 
             if(MessageBox.Show($"Вы точно хотите удалить отель {hotel.Name}?", "Внимание", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                try {
-                    TravelAgencyEntities1.GetEntities().Hotel.Remove(hotel);
-                    TravelAgencyEntities1.GetEntities().SaveChanges();
-                    MessageBox.Show("Отель удален.");
-
-                    PaginationInit();
-                    DGridHotels.ItemsSource = TravelAgencyEntities1.GetEntities().Hotel.ToList().Take(Paginator.NeedToView);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+                Manager.MainFrame.Navigate(new Verification((sender as Button).DataContext as Hotel));
             }
         }
 
